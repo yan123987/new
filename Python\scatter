@@ -1,0 +1,29 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def loadDataSet(file):
+	dataSet= pd.read_table(file,header = None)
+	xMat=np.mat(dataSet.iloc[:,:-1].values)
+	yMat=np.mat(dataSet.iloc[:,-1].values).T
+	return xMat,yMat
+
+def showDataSet(xMat, yMat):
+	data_p = []
+	data_n = []
+	m = xMat.shape[0]#样本总数
+	for i in range(m):
+		if yMat[i] > 0:
+			data_p.append(xMat[i])
+		else:
+			data_n.append(xMat[i])
+	data_p_ = np.array(data_p)#转换为numpy矩阵
+	data_n_ = np.array(data_n)#转换为numpy矩阵
+	plt.scatter(data_p_.T[0], data_p_.T[1])#正样本散点图
+	plt.scatter(data_n_.T[0], data_n_.T[1])#负样本散点图
+	plt.xlabel('YoungModulus(Pa)')
+	plt.ylabel('Membrane(N/m)')
+	plt.show()
+
+xMat, yMat=loadDataSet(r"E:\Adesk\数据集\杨氏模量和膜张力3.txt")
+showDataSet(xMat, yMat)

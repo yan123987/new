@@ -1,0 +1,39 @@
+%%调用Excel的数据时，只需要将列input1 = data(1,1:370)参数1换一下即可
+clear all;
+clc;                                                
+data = importdata('C:\Users\YJB\Desktop\数据集\工作簿1.xlsx');
+data = data';
+%% A hist of Elastic Modulus of GES-1
+input1 = data(1,1:370);
+input2 = data(1,371:740);
+figure(1)
+h1 = histogram(input1);
+xlabel('Elastic Modulus(Pa)')
+ylabel('Frequence Counts')
+title('A hist of Elastic Modulus');
+legend('Elastic Modulus of GES-1');
+%% A hist of Elastic Modulus of SGC
+% input1 = data(1,1:370);
+% input2 = data(1,371:740);
+% figure(1)
+% h2 = histogram(input2);
+% h2(1).FaceColor = [.8 0.5 .8];
+% %histfit(input2,16,'normal');
+% xlabel('Elastic Modulus(Pa)')
+% ylabel('Frequence Counts')
+% title('A hist of Elastic Modulus');
+% legend('Elastic Modulus of SGC');
+%% BOTH
+% input1 = data(1,1:370);
+% input2 = data(1,371:740);
+% figure(1)
+% h1 = histogram(input1);
+% hold on;
+% h2 = histogram(input2);
+% h2(1).FaceColor = [.8 0.5 .8];
+% %histfit(input2,16,'normal');
+% xlabel('Elastic Modulus(Pa)')
+% ylabel('Frequence Counts')
+% title('A hist of Elastic Modulus');
+% legend('Elastic Modulus of GES-1','Elastic Modulus of SGC');
+
